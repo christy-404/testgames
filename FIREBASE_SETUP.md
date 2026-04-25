@@ -1,6 +1,6 @@
 # Firebase Setup for Shared Leaderboard
 
-Follow these steps to get the shared leaderboard working tonight.
+Follow these steps to get the shared leaderboard working for tomorrow's event.
 
 ---
 
@@ -8,7 +8,7 @@ Follow these steps to get the shared leaderboard working tonight.
 
 1. Go to **[https://console.firebase.google.com/](https://console.firebase.google.com/)**
 2. Click **"Add project"** (or **Create a project**).
-3. Enter a project name, e.g. `emmanuel-quiz-event`
+3. Enter a project name, e.g. `emmanualholycommunion`
 4. Disable Google Analytics (faster, not needed for this).
 5. Click **Create project** and wait for it to finish.
 
@@ -67,10 +67,8 @@ Because this is a family event and you need it working **immediately**, use thes
    rules_version = '2';
    service cloud.firestore {
      match /databases/{database}/documents {
-       match /quizEntries/{entry} {
-         allow read: if true;
-         allow create: if true;
-         allow update, delete: if false;
+       match /{document=**} {
+         allow read, write: if true;
        }
      }
    }
@@ -86,6 +84,19 @@ Because this is a family event and you need it working **immediately**, use thes
 - Open the quiz on **Phone A**, enter a name, and complete the quiz.
 - Open the leaderboard on **Phone B** and verify you see the score from Phone A.
 - Try entering the **same name** on Phone B — it should show the already-played screen with rank and answers.
+
+---
+
+## What You Need to Create in Firebase Console
+
+You **ONLY** need to create these 4 things:
+
+1. **Firebase Project** (step 1 above)
+2. **Web App** inside that project (step 2 above)
+3. **Firestore Database** (step 4 above)
+4. **Security Rules** (step 5 above)
+
+**You do NOT need to manually create the `quizEntries` collection.** The code creates it automatically when the first quiz score is submitted.
 
 ---
 
