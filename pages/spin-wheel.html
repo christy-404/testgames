@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin the Wheel | Emmanuel's Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+  <div class="bg-mesh">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <nav class="top-nav">
+    <a href="../index.html" class="logo">Emmanuel</a>
+    <a href="../index.html" class="back-btn" data-navigate>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Home
+    </a>
+  </nav>
+
+  <section class="game-section">
+    <div class="container">
+      <div class="game-header text-center animate-fade-in-up">
+        <div class="label">Family Challenge</div>
+        <h2>Spin the Wheel</h2>
+        <hr class="divider">
+        <p>Give it a spin and embrace whatever challenge awaits. Good luck!</p>
+      </div>
+
+      <div class="wheel-container animate-scale-in delay-2">
+        <div class="wheel-wrapper">
+          <canvas id="wheelCanvas" width="500" height="500"></canvas>
+          <div class="wheel-pointer">
+            <svg width="32" height="52" viewBox="0 0 32 52" fill="none">
+              <!-- Top jewel/pivot circle -->
+              <circle cx="16" cy="7" r="6" fill="url(#goldBody)"/>
+              <circle cx="16" cy="7" r="3.5" fill="url(#goldHighlight)"/>
+              <!-- Elegant teardrop pointer body -->
+              <path d="M16 52L0 22C0 22 5 16 16 16C27 16 32 22 32 22L16 52Z" fill="url(#goldBody)"/>
+              <!-- Inner shine for depth -->
+              <path d="M16 46L7 25C7 25 10 22 16 22C22 22 25 25 25 25L16 46Z" fill="url(#goldHighlight)"/>
+              <!-- Center ridge highlight -->
+              <path d="M16 50L16 22" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="goldBody" x1="16" y1="0" x2="16" y2="52">
+                  <stop offset="0%" stop-color="#f0d878"/>
+                  <stop offset="40%" stop-color="#d4af37"/>
+                  <stop offset="100%" stop-color="#7a6015"/>
+                </linearGradient>
+                <linearGradient id="goldHighlight" x1="16" y1="0" x2="16" y2="46">
+                  <stop offset="0%" stop-color="#fff4c2"/>
+                  <stop offset="100%" stop-color="#d4af37"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg spin-btn" id="spinBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Spin the Wheel
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result Modal -->
+  <div class="modal-overlay" id="resultModal">
+    <div class="modal-content glass-card animate-pop">
+      <div class="modal-category" id="modalCategory">Category</div>
+      <h3 class="modal-title" id="modalTitle">Challenge</h3>
+      <p class="modal-desc" id="modalDesc">Description goes here.</p>
+      <button class="btn btn-primary" id="closeModal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Accept Challenge
+      </button>
+    </div>
+  </div>
+
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/spin-wheel.js"></script>
+</body>
+</html>
+

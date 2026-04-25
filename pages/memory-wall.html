@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Wall | Emmanuel's Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+  <div class="bg-mesh">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <nav class="top-nav">
+    <a href="../index.html" class="logo">Emmanuel</a>
+    <a href="../index.html" class="back-btn" data-navigate>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Home
+    </a>
+  </nav>
+
+  <section class="game-section">
+    <div class="container">
+      <div class="game-header text-center animate-fade-in-up">
+        <div class="label">A Place for Love</div>
+        <h2>Memory Wall</h2>
+        <hr class="divider">
+        <p>Write a message for Emmanuel. Your words will become part of this beautiful keepsake.</p>
+      </div>
+
+      <div class="memory-wall-container">
+        <!-- Form -->
+        <div class="memory-form-wrapper glass-card animate-fade-in-up delay-2">
+          <form class="memory-form" id="memoryForm">
+            <div class="form-group">
+              <label for="memoryName">Your Name</label>
+              <input type="text" id="memoryName" class="form-input" placeholder="Enter your name" required maxlength="50">
+            </div>
+            <div class="form-group">
+              <label for="memoryMessage">Your Message for Emmanuel</label>
+              <textarea id="memoryMessage" class="form-input" placeholder="Share a memory, a wish, or words of encouragement..." required maxlength="500"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              Post to the Wall
+            </button>
+          </form>
+        </div>
+
+        <!-- Wall -->
+        <div class="memory-wall-grid" id="memoryWall">
+          <div class="memory-empty" id="memoryEmpty">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <p>No memories yet. Be the first to leave a message for Emmanuel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/memory-wall.js"></script>
+</body>
+</html>
+
