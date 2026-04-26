@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reaction Time Challenge | Emmanuel's Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+  <div class="bg-mesh">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <nav class="top-nav">
+    <a href="../index.html" class="logo">Emmanuel</a>
+    <a href="../index.html" class="back-btn" data-navigate>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Home
+    </a>
+  </nav>
+
+  <section class="game-section">
+    <div class="container">
+      <div class="game-header text-center animate-fade-in-up">
+        <div class="label">Test Your Reflexes</div>
+        <h2>Reaction Time Challenge</h2>
+        <hr class="divider">
+        <p>Wait for the signal, then tap as fast as you can. Compete for the fastest reaction time.</p>
+      </div>
+
+      <!-- Name Entry Screen -->
+      <div class="name-entry-screen" id="nameEntryScreen">
+        <div class="name-entry-card glass-card animate-scale-in">
+          <div class="result-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+          <h2 class="result-title">Enter Your Name</h2>
+          <p class="result-message">Only one attempt is allowed. Make it count!</p>
+          <div class="form-group name-input-group">
+            <input type="text" class="form-input" id="playerNameInput" placeholder="Enter Your Name" maxlength="30" autocomplete="off">
+            <p class="input-error" id="nameError">Please enter a valid name (2-30 characters).</p>
+          </div>
+          <button class="btn btn-primary btn-lg" id="startGameBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Start Challenge
+          </button>
+          <a href="reaction-leaderboard.html" class="view-leaderboard-link" data-navigate>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            View Full Leaderboard
+          </a>
+        </div>
+      </div>
+
+      <!-- How It Works - Rules Section (visible with name entry) -->
+      <div class="rules-section glass-card animate-fade-in-up delay-2" id="rulesSection">
+        <h3 class="rules-title">How It Works</h3>
+        <div class="rules-list">
+          <div class="rule-item">
+            <span class="rule-number">1</span>
+            <p class="rule-text">Enter your name <strong>(only one attempt allowed)</strong></p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">2</span>
+            <p class="rule-text">Press <strong>Start Challenge</strong></p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">3</span>
+            <p class="rule-text">Wait for the screen to turn <span class="text-gold">GOLD</span></p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">4</span>
+            <p class="rule-text">Tap <strong>immediately</strong> when it changes</p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">5</span>
+            <p class="rule-text">Clicking too early = <span style="color:#f87171">automatic fail</span></p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">6</span>
+            <p class="rule-text">Your reaction time will be saved to the <strong>global leaderboard</strong></p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">7</span>
+            <p class="rule-text"><span class="text-gold">Fastest reaction wins</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Already Played Screen -->
+      <div class="already-played-screen" id="alreadyPlayedScreen" style="display:none;">
+        <div class="result-card glass-card animate-scale-in">
+          <div class="result-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <h2 class="result-title">Challenge Completed</h2>
+          <div class="result-score" id="playedReactionTime">0 ms</div>
+          <p class="result-message" id="playedMessage">You have already taken the challenge.</p>
+          <div class="result-rank" id="playedRankBadge">Rank</div>
+          <div class="personal-rank-display" id="playedPersonalRank">Your Rank: #1</div>
+          <a href="reaction-leaderboard.html" class="view-leaderboard-link" data-navigate>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            View Full Leaderboard
+          </a>
+        </div>
+
+        <!-- Leaderboard for Already Played -->
+        <div class="leaderboard-section glass-card animate-fade-in-up delay-2" id="playedLeaderboard">
+          <h3 class="leaderboard-title">Top 10 Leaderboard</h3>
+          <div class="leaderboard-list" id="playedLeaderboardList"></div>
+          <div class="personal-rank-outside" id="playedPersonalRankOutside"></div>
+        </div>
+      </div>
+
+      <!-- Game Container -->
+      <div class="game-container" id="gameContainer" style="display:none;">
+        <div class="reaction-game-area" id="reactionGameArea">
+          <div class="reaction-game-content" id="reactionGameContent">
+            <div class="reaction-status-icon" id="reactionStatusIcon">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="reaction-status-text" id="reactionStatusText">Press Start</h3>
+            <p class="reaction-status-sub" id="reactionStatusSub">When the screen turns gold, tap as fast as you can</p>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg reaction-start-btn" id="reactionStartBtn">Start Challenge</button>
+      </div>
+
+      <!-- Result Screen -->
+      <div class="result-screen" id="resultScreen" style="display:none;">
+        <div class="result-card glass-card animate-scale-in">
+          <div class="result-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+          <h2 class="result-title" id="resultTitle">Your Reaction Time</h2>
+          <div class="result-score" id="resultTime">0 ms</div>
+          <div class="performance-title" id="performanceTitle">Performance</div>
+          <p class="result-message" id="resultMessage">Message here</p>
+          <div class="result-rank" id="resultRank">Rank</div>
+          <div class="personal-rank-display" id="personalRankDisplay">Your Rank: #1</div>
+          <a href="reaction-leaderboard.html" class="view-leaderboard-link" data-navigate>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            View Full Leaderboard
+          </a>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard-section glass-card animate-fade-in-up delay-2" id="leaderboardSection">
+          <h3 class="leaderboard-title">Top 10 Leaderboard</h3>
+          <div class="leaderboard-list" id="leaderboardList"></div>
+          <div class="personal-rank-outside" id="personalRankOutside"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-transition" id="pageTransition"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/reaction-time.js"></script>
+</body>
+</html>
